@@ -1,0 +1,11 @@
+{
+  "name": "custom-snap",
+  "version": "1.0.0",
+  "description": "Allow both scroll snapping and normal scrolling between sections in your website",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hasan Mothaffar",
+  "license": "MIT"
+}
