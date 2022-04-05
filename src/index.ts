@@ -1,6 +1,6 @@
-import { EasingPreset, EASINGS } from './easings';
-import { CustomSnapProps, onEventCallback, ScrollDirection } from './types';
-import { ScrollUtils } from './utils';
+import { EasingPreset, EASINGS } from "./easings";
+import { CustomSnapProps, onEventCallback, ScrollDirection } from "./types";
+import { ScrollUtils } from "./utils";
 
 export class CustomSnap {
 	private container;
@@ -11,26 +11,33 @@ export class CustomSnap {
 
 	private snapDuration;
 	private easingPreset!: EasingPreset;
-	private scrollDirection: ScrollDirection = '';
+	private scrollDirection: ScrollDirection = "";
 
 	private afterSnap: onEventCallback;
 	private beforeSnap: onEventCallback;
 
 	private scrollUtils: ScrollUtils;
 
-	constructor({
-		containerID,
-		hideScrollbar = false,
-		normalScrollElementIDs = [],
-		snapDuration = 1000,
-		easingPreset = 'easeInOutQuad',
-		afterSnap = () => {},
-		beforeSnap = () => {},
-	}: CustomSnapProps) {
+	constructor(customSnapProps: CustomSnapProps) {
+		if (customSnapProps == undefined) {
+			throw new Error(
+				"custom-snap: Please provide a valid options object."
+			);
+		}
+		const {
+			containerID,
+			hideScrollbar = false,
+			normalScrollElementIDs = [],
+			snapDuration = 1000,
+			easingPreset = "easeInOutQuad",
+			afterSnap = () => {},
+			beforeSnap = () => {},
+		} = customSnapProps;
+
 		this.container = document.getElementById(containerID) as HTMLElement;
 		this.snapDuration = snapDuration;
 		this.setEasingPreset(easingPreset);
-		
+
 		this.scrollUtils = new ScrollUtils(
 			this.container,
 			normalScrollElementIDs
@@ -45,11 +52,11 @@ export class CustomSnap {
 	}
 
 	private calculateScrollDirection(): void {
-		let direction: ScrollDirection = '';
+		let direction: ScrollDirection = "";
 		if (window.scrollY >= this.lastScrollPosition) {
-			direction = 'top-to-bottom';
+			direction = "top-to-bottom";
 		} else if (window.scrollY < this.lastScrollPosition) {
-			direction = 'bottom-to-top';
+			direction = "bottom-to-top";
 		}
 
 		this.scrollDirection = direction;
@@ -61,7 +68,7 @@ export class CustomSnap {
 				`Custom Snap: Easing preset ${easingPreset} is invalid. Falling back to the default preset.`
 			);
 
-			this.easingPreset = 'easeInOutQuad';
+			this.easingPreset = "easeInOutQuad";
 		} else {
 			this.easingPreset = easingPreset;
 		}
@@ -106,7 +113,7 @@ export class CustomSnap {
 
 			if (
 				isWindowTouchingWithNextSection &&
-				this.scrollDirection == 'top-to-bottom' &&
+				this.scrollDirection == "top-to-bottom" &&
 				this.scrollUtils.canScrollToBottom(this.currentSectionIndex)
 			) {
 				this.scrollToSectionByIndex(
@@ -115,7 +122,7 @@ export class CustomSnap {
 				);
 			} else if (
 				isWindowIntersectingWithPreviousSection &&
-				this.scrollDirection == 'bottom-to-top' &&
+				this.scrollDirection == "bottom-to-top" &&
 				this.scrollUtils.canScrollToTop(this.currentSectionIndex)
 			) {
 				this.scrollToSectionByIndex(
@@ -128,7 +135,7 @@ export class CustomSnap {
 
 		// Snap scrolling
 		if (
-			this.scrollDirection == 'top-to-bottom' &&
+			this.scrollDirection == "top-to-bottom" &&
 			this.scrollUtils.canScrollToBottom(this.currentSectionIndex)
 		) {
 			this.scrollToSectionByIndex(
@@ -136,7 +143,7 @@ export class CustomSnap {
 				this.snapDuration
 			);
 		} else if (
-			this.scrollDirection == 'bottom-to-top' &&
+			this.scrollDirection == "bottom-to-top" &&
 			this.scrollUtils.canScrollToTop(this.currentSectionIndex)
 		) {
 			this.scrollToSectionByIndex(
@@ -171,22 +178,22 @@ export class CustomSnap {
 	public register(): void {
 		if (this.isRegistered) {
 			throw new Error(
-				'CustomSnap: Scroll event listener is already registered.'
+				"custom-snap: Scroll event listener is already registered."
 			);
 		}
 
 		this.isRegistered = true;
 		this.scrollToSectionByIndex(0);
-		window.addEventListener('scroll', this.onScroll);
+		window.addEventListener("scroll", this.onScroll);
 	}
 
 	public unregister(): void {
 		if (!this.isRegistered) {
 			throw new Error(
-				'CustomSnap: Trying to unregister an event listener that is already unregistered.'
+				"custom-snap: Trying to unregister an event listener that is already unregistered."
 			);
 		}
 		this.isRegistered = false;
-		window.removeEventListener('scroll', this.onScroll);
+		window.removeEventListener("scroll", this.onScroll);
 	}
 }
