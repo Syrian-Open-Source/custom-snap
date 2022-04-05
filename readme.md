@@ -1,8 +1,8 @@
 # Custom Snap - WIP
 
-A plain js solution that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
+A solution written in TypeScript that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
-> This solution does not cover all use cases. Feel free to customize it to your own needs. Pull requests are welcome :)
+> The library is still under development! I'm working on the docs right now, and it should be published on NPM once I get to fix the remaining bugs.
 
 ## Motivation
 
@@ -39,7 +39,7 @@ const scrollInstance = new CustomSnap({
 scrollInstance.register();
 ```
 
-Specify the sections in which you want to have normal scrolling, and, automatically, all other sections that you didn't specify will have snap scrolling.
+<!-- Specify the sections in which you want to have normal scrolling, and, automatically, all other sections that you didn't specify will have snap scrolling. -->
 
 **Important!**: You have to specify an ID on each every child of the container.
 
@@ -52,5 +52,5 @@ Specify the sections in which you want to have normal scrolling, and, automatica
 
 ## Inspiration
 
-https://gist.github.com/james2doyle/5694700
-https://github.com/tarun-dugar/easy-scroll
+-   https://gist.github.com/james2doyle/5694700
+-   https://github.com/tarun-dugar/easy-scroll
