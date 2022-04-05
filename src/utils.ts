@@ -1,4 +1,4 @@
-import { EasingPreset, EASINGS } from './easings';
+import { EasingPreset, EASINGS } from "./easings";
 
 export class ScrollUtils {
 	private container;
@@ -14,7 +14,7 @@ export class ScrollUtils {
 	}
 
 	private appendScrollbarStyles() {
-		const style = document.createElement('style');
+		const style = document.createElement("style");
 		style.innerHTML = `
 			.custom-snap--no-scrollbar {
 				-ms-overflow-style: none;
@@ -42,11 +42,13 @@ export class ScrollUtils {
 	}
 
 	public showScrollbar(): void {
-		document.body.classList.add('custom-snap--no-scrollbar');
+		document.documentElement.classList.remove("custom-snap--no-scrollbar");
+		document.body.classList.remove("custom-snap--no-scrollbar");
 	}
 
 	public hideScrollbar(): void {
-		document.body.classList.remove('custom-snap--no-scrollbar');
+		document.documentElement.classList.add("custom-snap--no-scrollbar");
+		document.body.classList.add("custom-snap--no-scrollbar");
 	}
 
 	public isSectionNormal(index: number): boolean {
@@ -66,14 +68,14 @@ export class ScrollUtils {
 	}
 
 	public disableScroll() {
-		window.addEventListener('DOMMouseScroll', this.preventDefault, false);
+		window.addEventListener("DOMMouseScroll", this.preventDefault, false);
 		window.onwheel = this.preventDefault;
 		window.ontouchmove = this.preventDefault;
 	}
 
 	public enableScroll() {
 		window.removeEventListener(
-			'DOMMouseScroll',
+			"DOMMouseScroll",
 			this.preventDefault,
 			false
 		);
