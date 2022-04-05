@@ -53,9 +53,9 @@ export class CustomSnap {
 
 	private calculateScrollDirection(): void {
 		let direction: ScrollDirection = "";
-		if (window.scrollY >= this.lastScrollPosition) {
+		if (window.scrollY - this.lastScrollPosition > 3) {
 			direction = "top-to-bottom";
-		} else if (window.scrollY < this.lastScrollPosition) {
+		} else if (window.scrollY - this.lastScrollPosition < -3) {
 			direction = "bottom-to-top";
 		}
 
@@ -91,10 +91,9 @@ export class CustomSnap {
 	}
 
 	public onScroll(): void {
+		if (this.isAnimating) return;
 		this.calculateScrollDirection();
 		this.lastScrollPosition = window.scrollY;
-
-		if (this.isAnimating) return;
 
 		// Normal scrolling
 		if (this.scrollUtils.isSectionNormal(this.currentSectionIndex)) {
@@ -162,6 +161,8 @@ export class CustomSnap {
 		this.currentSectionIndex = index;
 		const section = this.scrollUtils.getSectionByIndex(index);
 		const top = section!.offsetTop;
+
+		this.lastScrollPosition = top;
 
 		this.isAnimating = true;
 		this.scrollUtils.disableScroll();
