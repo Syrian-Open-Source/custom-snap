@@ -105,6 +105,21 @@ export class ScrollUtils {
 
 				if (elapsedTime < duration) {
 					requestAnimationFrame(animateScroll);
+				} else if (window.scrollY < to) {
+					/**
+					 * Sometimes, window.scrollY is not exactly equal to the value
+					 * of the `to` parameter -- there are off by 1 pixel errors that cause
+					 * infinite bouncing between sections.
+					 *
+					 * I guess it's caused by the easing functions or the
+					 * `elapsedTime < duration` branch.
+					 *
+					 * It's important for the window.scrollY to be equal to `to` in
+					 * order to prevent errors in determining the scrollDirection
+					 *
+					 */
+					window.scrollBy(0, to - window.scrollY);
+					resolve(undefined);
 				} else {
 					resolve(undefined);
 				}

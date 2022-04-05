@@ -52,10 +52,24 @@ export class CustomSnap {
 	}
 
 	private calculateScrollDirection(): void {
+		/**
+		 * Why `margin`? Because sometimes the values of the last
+		 * scroll position and current one might be too close,
+		 * and so even if the user did not scroll, the library
+		 * would trigger a snap between sections.
+		 *
+		 * Unless the gap between the two scroll positions is at
+		 * least equal to `margin`, I don't want to trigger snapping.
+		 *
+		 * Note that `margin` is just an arbitrary value that
+		 * should be smaller than 5
+		 */
+		const margin = 3;
+
 		let direction: ScrollDirection = "";
-		if (window.scrollY - this.lastScrollPosition > 3) {
+		if (window.scrollY - this.lastScrollPosition > margin) {
 			direction = "top-to-bottom";
-		} else if (window.scrollY - this.lastScrollPosition < -3) {
+		} else if (window.scrollY - this.lastScrollPosition < -margin) {
 			direction = "bottom-to-top";
 		}
 
