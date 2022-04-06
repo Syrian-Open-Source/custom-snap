@@ -1,4 +1,5 @@
-import { EasingPreset, EASINGS } from "./easings";
+import { EASINGS } from "./easings";
+import { EasingPreset } from "./types";
 
 export class ScrollUtils {
 	private container;
