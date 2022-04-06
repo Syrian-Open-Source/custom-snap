@@ -64,17 +64,13 @@ export class ScrollUtils {
 	}
 
 	public disableScroll() {
-		window.addEventListener("DOMMouseScroll", this.preventDefault, false);
+		window.addEventListener("wheel", this.preventDefault, false);
 		window.onwheel = this.preventDefault;
 		window.ontouchmove = this.preventDefault;
 	}
 
 	public enableScroll() {
-		window.removeEventListener(
-			"DOMMouseScroll",
-			this.preventDefault,
-			false
-		);
+		window.removeEventListener("wheel", this.preventDefault, false);
 		window.onwheel = null;
 		window.ontouchmove = null;
 		return (document.onkeydown = null);
