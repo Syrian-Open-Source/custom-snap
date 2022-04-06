@@ -1,5 +1,10 @@
-import { EasingPreset, EASINGS } from "./easings";
-import { CustomSnapProps, onEventCallback, ScrollDirection } from "./types";
+import { EASINGS } from "./easings";
+import {
+	CustomSnapProps,
+	EasingPreset,
+	onEventCallback,
+	ScrollDirection,
+} from "./types";
 import { ScrollUtils } from "./utils";
 
 export class CustomSnap {
@@ -76,36 +81,7 @@ export class CustomSnap {
 		this.scrollDirection = direction;
 	}
 
-	public setEasingPreset(easingPreset: EasingPreset): void {
-		// https://eslint.org/docs/rules/no-prototype-builtins
-		if (Object.prototype.hasOwnProperty.call(EASINGS, easingPreset)) {
-			console.error(
-				`Custom Snap: Easing preset ${easingPreset} is invalid. Falling back to the default preset.`
-			);
-
-			this.easingPreset = "easeInOutQuad";
-		} else {
-			this.easingPreset = easingPreset;
-		}
-	}
-
-	public setSnapDuration(duration = 1000) {
-		this.snapDuration = duration;
-	}
-
-	public getScrollDirection(): ScrollDirection {
-		return this.scrollDirection;
-	}
-
-	public hideScrollbar(): void {
-		this.scrollUtils.hideScrollbar();
-	}
-
-	public showScrollbar(): void {
-		this.scrollUtils.showScrollbar();
-	}
-
-	public onScroll(): void {
+	private onScroll(): void {
 		if (this.isAnimating) return;
 		this.calculateScrollDirection();
 		this.lastScrollPosition = window.scrollY;
@@ -167,7 +143,54 @@ export class CustomSnap {
 		}
 	}
 
-	public scrollToSectionByIndex(index: number, duration = 1000) {
+	/**
+	 * Sets a new easing preset for snap scrolling
+	 */
+	public setEasingPreset(easingPreset: EasingPreset): void {
+		// https://eslint.org/docs/rules/no-prototype-builtins
+		if (Object.prototype.hasOwnProperty.call(EASINGS, easingPreset)) {
+			console.error(
+				`Custom Snap: Easing preset ${easingPreset} is invalid. Falling back to the default preset.`
+			);
+
+			this.easingPreset = "easeInOutQuad";
+		} else {
+			this.easingPreset = easingPreset;
+		}
+	}
+
+	/**
+	 * Sets a new duration for snap scrolling
+	 */
+	public setSnapDuration(duration = 1000): void {
+		this.snapDuration = duration;
+	}
+
+	/**
+	 * Returns the scroll's direction
+	 */
+	public getScrollDirection(): ScrollDirection {
+		return this.scrollDirection;
+	}
+
+	/**
+	 * Hides the browser's scrollbar using CSS
+	 */
+	public hideScrollbar(): void {
+		this.scrollUtils.hideScrollbar();
+	}
+
+	/**
+	 * Shows the browser's scrollbar
+	 */
+	public showScrollbar(): void {
+		this.scrollUtils.showScrollbar();
+	}
+
+	/**
+	 * Scrolls to a specific section over a period of time.
+	 */
+	public scrollToSectionByIndex(index: number, duration = 1000): void {
 		this.beforeSnap(
 			this.currentSectionIndex,
 			this.scrollUtils.getSectionByIndex(this.currentSectionIndex)
@@ -193,6 +216,11 @@ export class CustomSnap {
 		});
 	}
 
+	/**
+	 * Registers the snap scroll event listener.
+	 * Note that without invoking this function, all scrolling
+	 * would be considered normal.
+	 */
 	public register(): void {
 		if (this.isRegistered) {
 			throw new Error(
@@ -205,6 +233,10 @@ export class CustomSnap {
 		window.addEventListener("scroll", this.onScroll);
 	}
 
+	/**
+	 * Removes the currently bound scroll event listener.
+	 * After unregistering, all scrolling would be considered normal.
+	 */
 	public unregister(): void {
 		if (!this.isRegistered) {
 			throw new Error(

@@ -1,4 +1,4 @@
-import { EasingPreset } from './easings';
+export type EasingPreset = "easeInOutQuad" | "easeInCubic" | "inOutQuintic";
 
 export interface CustomSnapProps {
 	/** ID of the wrapping container */
@@ -27,4 +27,4 @@ export interface onEventCallback {
 	(id?: number, section?: HTMLElement | null): void;
 }
 
-export type ScrollDirection = 'top-to-bottom' | 'bottom-to-top' | '';
+export type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";

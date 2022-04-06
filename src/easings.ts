@@ -19,5 +19,3 @@ export const EASINGS = {
 		return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
 	},
 };
-
-export type EasingPreset = "easeInOutQuad" | "easeInCubic" | "inOutQuintic"
