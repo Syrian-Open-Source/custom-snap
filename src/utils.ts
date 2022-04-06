@@ -65,15 +65,17 @@ export class ScrollUtils {
 	}
 
 	public disableScroll() {
-		window.addEventListener("wheel", this.preventDefault, false);
-		window.onwheel = this.preventDefault;
-		window.ontouchmove = this.preventDefault;
+		window.addEventListener("wheel", this.preventDefault, {
+			passive: false,
+		});
+		window.addEventListener("touchstart", this.preventDefault, {
+			passive: false,
+		});
 	}
 
 	public enableScroll() {
-		window.removeEventListener("wheel", this.preventDefault, false);
-		window.onwheel = null;
-		window.ontouchmove = null;
+		window.removeEventListener("wheel", this.preventDefault);
+		window.removeEventListener("touchstart", this.preventDefault);
 		return (document.onkeydown = null);
 	}
 
