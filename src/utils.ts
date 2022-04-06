@@ -33,12 +33,8 @@ export class ScrollUtils {
 		return Array.from(this.container.children).map((child) => child.id);
 	}
 
-	private preventDefault(e: any) {
-		e = e || window.event;
-		if (e.preventDefault) {
-			e.preventDefault();
-		}
-		return (e.returnValue = false);
+	private preventDefault(e: Event) {
+		e.preventDefault();
 	}
 
 	public showScrollbar(): void {
