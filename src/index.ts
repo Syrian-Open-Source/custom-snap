@@ -77,7 +77,8 @@ export class CustomSnap {
 	}
 
 	public setEasingPreset(easingPreset: EasingPreset): void {
-		if (!EASINGS.hasOwnProperty(easingPreset)) {
+		// https://eslint.org/docs/rules/no-prototype-builtins
+		if (Object.prototype.hasOwnProperty.call(EASINGS, easingPreset)) {
 			console.error(
 				`Custom Snap: Easing preset ${easingPreset} is invalid. Falling back to the default preset.`
 			);
@@ -88,7 +89,7 @@ export class CustomSnap {
 		}
 	}
 
-	public setSnapDuration(duration: number = 1000) {
+	public setSnapDuration(duration = 1000) {
 		this.snapDuration = duration;
 	}
 
@@ -113,16 +114,16 @@ export class CustomSnap {
 		if (this.scrollUtils.isSectionNormal(this.currentSectionIndex)) {
 			const normalSection = this.scrollUtils.getSectionByIndex(
 				this.currentSectionIndex
-			);
+			) as HTMLElement;
 
 			const isWindowTouchingWithNextSection =
 				window.scrollY +
 					window.innerHeight -
-					(normalSection!.offsetTop + normalSection!.offsetHeight) >
+					(normalSection.offsetTop + normalSection.offsetHeight) >
 				2;
 
 			const isWindowIntersectingWithPreviousSection =
-				window.scrollY - normalSection!.offsetTop < -2;
+				window.scrollY - normalSection.offsetTop < -2;
 
 			if (
 				isWindowTouchingWithNextSection &&
@@ -173,8 +174,10 @@ export class CustomSnap {
 		);
 
 		this.currentSectionIndex = index;
-		const section = this.scrollUtils.getSectionByIndex(index);
-		const top = section!.offsetTop;
+		const section = this.scrollUtils.getSectionByIndex(
+			index
+		) as HTMLElement;
+		const top = section.offsetTop;
 
 		this.lastScrollPosition = top;
 
