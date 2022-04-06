@@ -1,5 +1,7 @@
 # Custom Snap - Snap and normal scrolling at once
 
+[![npm version](https://badge.fury.io/js/custom-snap.svg)](https://badge.fury.io/js/custom-snap)
+
 A solution written in TypeScript that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
 ## Motivation
@@ -12,6 +14,12 @@ This is heavily inspired by the `normalScrollElements` option in the fullpage.js
 -   Works with both fullpage sections (100vh) and variable height sections.
 -   You can customize the snap scrolling's duration and easing presets
 -   You can have as many normal scroll sections as you want.
+
+## Installation
+
+```sh
+npm install custom-snap
+```
 
 ## Example usage
 
@@ -31,7 +39,7 @@ HTML structure:
 CSS
 
 ```css
-// These values are arbitrary. You can choose any height you want
+/* These values are arbitrary. You can choose any height you want */
 .section {
 	height: 100vh;
 }
@@ -84,49 +92,49 @@ This is useful in case you want to scroll programmatically using the `scrollToSe
 ## Methods
 
 ```ts
-	/**
-	 * Sets a new easing preset for snap scrolling
-	 */
-	setEasingPreset(easingPreset: EasingPreset): void
+/**
+ * Sets a new easing preset for snap scrolling
+ */
+setEasingPreset(easingPreset: EasingPreset): void
 
-	/**
-	 * Sets a new duration for snap scrolling
-	 */
-	setSnapDuration(duration = 1000): void
+/**
+ * Sets a new duration for snap scrolling
+ */
+setSnapDuration(duration = 1000): void
 
-	/**
-	 * Returns the scroll's direction
-	 */
-	getScrollDirection(): ScrollDirection
+/**
+ * Returns the scroll's direction
+ */
+getScrollDirection(): ScrollDirection
 
-	/**
-	 * Hides the browser's scrollbar using CSS
-	 */
-	hideScrollbar(): void
+/**
+ * Hides the browser's scrollbar using CSS
+ */
+hideScrollbar(): void
 
 
-	/**
-	 * Shows the browser's scrollbar
-	 */
-	showScrollbar(): void
+/**
+ * Shows the browser's scrollbar
+ */
+showScrollbar(): void
 
-	/**
-	 * Scrolls to a specific section over a period of time.
-	 */
-	scrollToSectionByIndex(index: number, duration = 1000): void
+/**
+ * Scrolls to a specific section over a period of time.
+ */
+scrollToSectionByIndex(index: number, duration = 1000): void
 
-	/**
-	 * Registers the snap scroll event listener.
-	 * Note that without invoking this function, all scrolling
-	 * would be considered normal.
-	 */
-	register(): void
+/**
+ * Registers the snap scroll event listener.
+ * Note that without invoking this function, all scrolling
+ * would be considered normal.
+ */
+register(): void
 
-	/**
-	 * Removes the currently bound scroll event listener.
-	 * After unregistering, all scrolling would be considered normal.
-	 */
-	unregister(): void
+/**
+ * Removes the currently bound scroll event listener.
+ * After unregistering, all scrolling would be considered normal.
+ */
+unregister(): void
 ```
 
 ## Types
