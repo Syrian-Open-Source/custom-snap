@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/custom-snap.svg)](https://badge.fury.io/js/custom-snap)
 
-A solution written in TypeScript that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
+A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
 ## Motivation
 
