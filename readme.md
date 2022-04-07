@@ -69,7 +69,7 @@ scrollInstance.register();
 
 In this example, sections with ids `c` and `d` will have normal scrolling, while all other children of `#container` will have snap scrolling.
 
-**Important!**: You have to specify an ID on each every child of the container.
+**Important!**: You have to specify an ID on every child of the container.
 
 ### Indexing
 
