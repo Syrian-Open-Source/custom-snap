@@ -1,6 +1,7 @@
 # Custom Snap - Snap and normal scrolling at once
 
 [![npm version](https://badge.fury.io/js/custom-snap.svg)](https://badge.fury.io/js/custom-snap)
+[![CodeFactor](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/badge/master)](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/overview/master)
 
 A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
@@ -112,7 +113,6 @@ getScrollDirection(): ScrollDirection
  */
 hideScrollbar(): void
 
-
 /**
  * Shows the browser's scrollbar
  */
@@ -153,3 +153,5 @@ type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";
 
 -   https://gist.github.com/james2doyle/5694700
 -   https://github.com/tarun-dugar/easy-scroll
+-   https://github.com/alvarotrigo/fullPage.js
+-   https://github.com/geomolenaar/LeScroll
