@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/custom-snap.svg)](https://badge.fury.io/js/custom-snap)
 [![CodeFactor](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/badge/master)](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/overview/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
