@@ -25,7 +25,7 @@ npm install custom-snap
 
 ## Example usage
 
-HTML structure:
+**HTML structure**
 
 ```html
 <div id="container">
@@ -38,7 +38,7 @@ HTML structure:
 </div>
 ```
 
-CSS
+**CSS**
 
 ```css
 /* These values are arbitrary. You can choose any height you want */
@@ -51,7 +51,7 @@ CSS
 }
 ```
 
-JS
+**JS**
 
 ```js
 import { CustomSnap } from "custom-snap";
@@ -59,11 +59,8 @@ import { CustomSnap } from "custom-snap";
 const scrollInstance = new CustomSnap({
 	containerID: "container",
 	normalScrollElementIDs: ["c", "e"],
-	hideScrollbar: false,
-	snapDuration: 1000,
 	afterSnap: (id, section) => {},
 	beforeSnap: (id, section) => {},
-	easingPreset: "",
 });
 
 scrollInstance.register();
@@ -81,15 +78,15 @@ This is useful in case you want to scroll programmatically using the `scrollToSe
 
 ## Options
 
-| Key                    | Description                                                         | Type            | Default value |
-| ---------------------- | ------------------------------------------------------------------- | --------------- | ------------- |
-| containerID            | ID of the wrapping container                                        | string          | none          |
-| hideScrollbar          | Whether to hide the browser's scrollbar or not                      | boolean         | `false`       |
-| normalScrollElementIDs | IDs of the sections to which scroll snapping doesn't apply          | string[]        | `[]`          |
-| snapDuration           | The duration that scroll snapping takes in milliseconds             | number          | `1000` (ms)   |
-| easingPreset           | The transition timing function that gets applied to snapping        | EasingPreset    | none          |
-| afterSnap              | A function that gets called after snap scrolling is performed       | onEventCallback | `() => {}`    |
-| before                 | A function that gets called just before snap scrolling is performed | onEventCallback | `() => {}`    |
+| Key                    | Description                                                         | Type            | Default value   |
+| ---------------------- | ------------------------------------------------------------------- | --------------- | --------------- |
+| containerID            | ID of the wrapping container                                        | string          | none            |
+| hideScrollbar          | Whether to hide the browser's scrollbar or not                      | boolean         | `false`         |
+| normalScrollElementIDs | IDs of the sections to which scroll snapping doesn't apply          | string[]        | `[]`            |
+| snapDuration           | The duration that scroll snapping takes in milliseconds             | number          | `1000` (ms)     |
+| easingPreset           | The transition timing function that gets applied to snapping        | EasingPreset    | `easeInOutQuad` |
+| afterSnap              | A function that gets called after snap scrolling is performed       | OnEventCallback | `() => {}`      |
+| beforeSnap             | A function that gets called just before snap scrolling is performed | OnEventCallback | `() => {}`      |
 
 ## Methods
 
@@ -141,12 +138,11 @@ unregister(): void
 ## Types
 
 ```ts
-interface onEventCallback {
+interface OnEventCallback {
 	(id?: number, section?: HTMLElement | null): void;
 }
 
 type EasingPreset = "easeInOutQuad" | "easeInCubic" | "inOutQuintic";
-
 type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";
 ```
 

@@ -17,13 +17,13 @@ export interface CustomSnapProps {
 	easingPreset: EasingPreset;
 
 	/** A function that gets called after snap scrolling is performed */
-	afterSnap: onEventCallback;
+	afterSnap: OnEventCallback;
 
 	/** A function that gets called just before snap scrolling is performed */
-	beforeSnap: onEventCallback;
+	beforeSnap: OnEventCallback;
 }
 
-export interface onEventCallback {
+export interface OnEventCallback {
 	(id?: number, section?: HTMLElement | null): void;
 }
 

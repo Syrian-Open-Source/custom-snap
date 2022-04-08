@@ -2,7 +2,7 @@ import { EASINGS } from "./easings";
 import {
 	CustomSnapProps,
 	EasingPreset,
-	onEventCallback,
+	OnEventCallback,
 	ScrollDirection,
 } from "./types";
 import { ScrollUtils } from "./utils";
@@ -18,8 +18,8 @@ export class CustomSnap {
 	private easingPreset!: EasingPreset;
 	private scrollDirection: ScrollDirection = "";
 
-	private afterSnap: onEventCallback;
-	private beforeSnap: onEventCallback;
+	private afterSnap: OnEventCallback;
+	private beforeSnap: OnEventCallback;
 
 	private scrollUtils: ScrollUtils;
 
