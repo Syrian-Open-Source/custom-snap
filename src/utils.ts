@@ -98,26 +98,31 @@ export class ScrollUtils {
 				document.documentElement.scrollTop = animationProgress;
 				document.body.scrollTop = animationProgress;
 
+				// Continue animation loop
 				if (elapsedTime < duration) {
-					requestAnimationFrame(animateScroll);
-				} else if (window.scrollY < to) {
-					/**
-					 * Sometimes, window.scrollY is not exactly equal to the value
-					 * of the `to` parameter -- there are off by 1 pixel errors that cause
-					 * infinite bouncing between sections.
-					 *
-					 * I guess it's caused by the easing functions or the
-					 * `elapsedTime < duration` branch.
-					 *
-					 * It's important for the window.scrollY to be equal to `to` in
-					 * order to prevent errors in determining the scrollDirection
-					 *
-					 */
-					window.scrollBy(0, to - window.scrollY);
-					resolve(undefined);
-				} else {
-					resolve(undefined);
+					return requestAnimationFrame(animateScroll);
 				}
+
+				/**
+				 * Sometimes, window.scrollY is not exactly equal to the value
+				 * of the `to` parameter -- there are off by 1 pixel errors that cause
+				 * infinite bouncing between sections.
+				 *
+				 * I guess it's caused by the easing functions or the
+				 * `elapsedTime < duration` branch.
+				 *
+				 * It's important for the window.scrollY to be equal to `to` in
+				 * order to prevent errors in determining the scrollDirection
+				 *
+				 */
+				if (window.scrollY < to) {
+					window.scrollBy(0, to - window.scrollY);
+				} else if (window.scrollY > to) {
+					window.scrollBy(0, -1 * (window.scrollY - to));
+				}
+
+				// Animation is done, and window.scrollY should be equal to `to`
+				resolve(undefined);
 			};
 
 			requestAnimationFrame(animateScroll);
