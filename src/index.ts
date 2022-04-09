@@ -148,7 +148,7 @@ export class CustomSnap {
 	 */
 	public setEasingPreset(easingPreset: EasingPreset): void {
 		// https://eslint.org/docs/rules/no-prototype-builtins
-		if (Object.prototype.hasOwnProperty.call(EASINGS, easingPreset)) {
+		if (!Object.prototype.hasOwnProperty.call(EASINGS, easingPreset)) {
 			console.error(
 				`Custom Snap: Easing preset ${easingPreset} is invalid. Falling back to the default preset.`
 			);
