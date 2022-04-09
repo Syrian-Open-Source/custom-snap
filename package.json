@@ -21,6 +21,7 @@
 		"type": "git",
 		"url": "https://github.com/HasanMothaffar/custom-snap.git"
 	},
+	"homepage": "https://hasanmothaffar.github.io/custom-snap/",
 	"license": "MIT",
 	"files": [
 		"dist/"
