@@ -6,7 +6,7 @@
 
 A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
-<!-- **Demo link**: https://hasanmothaffar.github.io/custom-snap/ -->
+**Demo link**: https://syrian-open-source.github.io/custom-snap/
 
 <!-- ## Motivation
 
