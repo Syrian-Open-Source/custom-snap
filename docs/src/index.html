@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Primary Meta Tags -->
+
+		<title>custom-snap.js - Normal and snap scrolling at once</title>
+
+		<meta
+			name="title"
+			content="custom-snap.js - Normal and snap scrolling at once"
+		/>
+		<meta
+			name="description"
+			content="Allow both snap scrolling and normal scrolling between different sections in your website."
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<!-- TODO <meta property="og:url" content="https://metatags.io/" /> -->
+		<meta
+			property="og:title"
+			content="custom-snap.js - Normal and snap scrolling at once"
+		/>
+		<meta
+			property="og:description"
+			content="Allow both snap scrolling and normal scrolling between different sections in your website."
+		/>
+
+		<!-- Twitter -->
+		<!-- TODO <meta property="twitter:url" content="https://metatags.io/" /> -->
+		<meta
+			property="twitter:title"
+			content="custom-snap.js - Normal and snap scrolling at once"
+		/>
+		<meta
+			property="twitter:description"
+			content="Allow both snap scrolling and normal scrolling between different sections in your website."
+		/>
+
+		<meta
+			name="keywords"
+			content="scroll, scroll-snap, normal-scrolling, js, custom-snap, npm-package"
+		/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet"> 
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Poppins, Arial;
+				margin: 0;
+
+				position: relative;
+			}
+
+			form {
+				padding: 0.5rem;
+			}
+
+			legend {
+				background-color: #000;
+				color: #fff;
+				padding: 3px 6px;
+				font-size: 1.2rem;
+			}
+
+			fieldset {
+				border: none;
+
+				display: flex;
+				flex-direction: column;
+			}
+
+			.form-control {
+				display: flex;
+				align-items: center;
+
+				justify-content: space-between;
+				width: 50%;
+				margin-bottom: 0.5rem;
+			}
+
+			#options {
+				position: fixed;
+				top: 0;
+				right: 0;
+
+				width: 400px;
+				color: #fff;
+
+				background-color: gray;
+				z-index: 2;
+			}
+
+			.section {
+				height: 100vh;
+				padding-top: 4rem;
+				font-size: 3rem;
+				font-weight: 500;
+
+
+				display: flex;
+				align-items: flex-start;
+				justify-content: center;
+			}
+
+			.long-content {
+				height: 200vh;
+			}
+
+			#a {
+				background-color: #fff;
+			}
+
+			#b {
+				background-color: #dbfcffff;
+			}
+
+			#c {
+				background-color: #dbdaeaff;
+			}
+
+			#d {
+				background-color: #ddc3d0ff;
+			}
+
+			#e {
+				background-color: #b7a196ff;
+			}
+
+			#f {
+				background-color: #857e61ff;
+			}
+
+			@media (max-width: 1024px) {
+				#options {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="a" class="section">First Section (snap)</div>
+			<div id="b" class="section">Second Section (snap)</div>
+			<div id="c" class="section long-content">
+				Third Section (normal)
+			</div>
+			<div id="d" class="section">Fourth Section (snap)</div>
+			<div id="e" class="section long-content">
+				Fifth Section (normal)
+			</div>
+			<div id="f" class="section">Sixth Section (snap)</div>
+		</div>
+
+		<div id="options">
+			<form autocomplete="off">
+				<fieldset>
+					<legend>Easing Preset</legend>
+					<div class="form-control">
+						<label for="easeInOutQuad">easeInOutQuad</label>
+						<input
+							name="easing_preset"
+							type="radio"
+							id="easeInOutQuad"
+							value="easeInOutQuad"
+							checked
+						/>
+					</div>
+
+					<div class="form-control">
+						<label for="easeInCubic">easeInCubic</label>
+						<input
+							name="easing_preset"
+							type="radio"
+							id="easeInCubic"
+							value="easeInCubic"
+						/>
+					</div>
+
+					<div class="form-control">
+						<label for="inOutQuintic">inOutQuintic</label>
+						<input
+							name="easing_preset"
+							type="radio"
+							id="inOutQuintic"
+							value="inOutQuintic"
+						/>
+					</div>
+				</fieldset>
+
+				<fieldset style="padding-bottom: 0">
+					<legend>Snap Duration</legend>
+					<div class="form-control">
+						<input
+							type="range"
+							id="snap_duration"
+							name="snap_duration"
+							min="500"
+							max="5000"
+							value="1000"
+							step="250"
+						/>
+						<label class="snap-duration-label" for="snap_duration"
+							>1000ms</label
+						>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>
