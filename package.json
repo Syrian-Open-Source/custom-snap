@@ -15,7 +15,8 @@
 	"keywords": [
 		"scroll",
 		"scroll-snap",
-		"js"
+		"typescript",
+		"browser"
 	],
 	"author": "Hasan Mothaffar <hasan.mozafar@gmail.com>",
 	"repository": {
