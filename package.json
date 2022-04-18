@@ -1,6 +1,6 @@
 {
 	"name": "custom-snap",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A module that allows having both scroll snapping and normal scrolling between sections in your website",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
