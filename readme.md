@@ -6,11 +6,11 @@
 
 A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
-**Demo link**: https://hasanmothaffar.github.io/custom-snap/
+<!-- **Demo link**: https://hasanmothaffar.github.io/custom-snap/ -->
 
-## Motivation
+<!-- ## Motivation
 
-This is heavily inspired by the `normalScrollElements` option in the fullpage.js library. Scrolling with this option enabled, however, wan't smooth enough for my needs, which is why I created this library.
+This is heavily inspired by the `normalScrollElements` option in the fullpage.js library. Scrolling with this option enabled, however, wan't smooth enough for my needs, which is why I created this library. -->
 
 ## Features
 
