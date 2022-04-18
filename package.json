@@ -20,9 +20,9 @@
 	"author": "Hasan Mothaffar <hasan.mozafar@gmail.com>",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/HasanMothaffar/custom-snap.git"
+		"url": "https://github.com/Syrian-Open-Source/custom-snap"
 	},
-	"homepage": "https://hasanmothaffar.github.io/custom-snap/",
+	"homepage": "https://syrian-open-source.github.io/custom-snap/",
 	"license": "MIT",
 	"files": [
 		"dist/"
