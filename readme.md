@@ -1,16 +1,11 @@
 # Custom Snap - Snap and normal scrolling at once
 
 [![npm version](https://badge.fury.io/js/custom-snap.svg)](https://badge.fury.io/js/custom-snap)
-[![CodeFactor](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/badge/master)](https://www.codefactor.io/repository/github/hasanmothaffar/custom-snap/overview/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A TypeScript module that lets you have both scroll snapping and native scrolling functionality in different sections of your website.
 
 **Demo link**: https://syrian-open-source.github.io/custom-snap/
-
-<!-- ## Motivation
-
-This is heavily inspired by the `normalScrollElements` option in the fullpage.js library. Scrolling with this option enabled, however, wan't smooth enough for my needs, which is why I created this library. -->
 
 ## Features
 
@@ -43,7 +38,7 @@ npm install custom-snap
 **CSS**
 
 ```css
-/* These values are arbitrary. You can choose any height you want */
+/* Height values are arbitrary. You can choose any height you want */
 .section {
 	height: 100vh;
 }
@@ -80,17 +75,17 @@ This is useful in case you want to scroll programmatically using the `scrollToSe
 
 ## Options
 
-| Key                    | Description                                                         | Type            | Default value   |
-| ---------------------- | ------------------------------------------------------------------- | --------------- | --------------- |
-| containerID            | ID of the wrapping container                                        | string          | none            |
-| hideScrollbar          | Whether to hide the browser's scrollbar or not                      | boolean         | `false`         |
-| normalScrollElementIDs | IDs of the sections to which scroll snapping doesn't apply          | string[]        | `[]`            |
-| snapDuration           | The duration that scroll snapping takes in milliseconds             | number          | `1000` (ms)     |
-| easingPreset           | The transition timing function that gets applied to snapping        | EasingPreset    | `easeInOutQuad` |
-| afterSnap              | A function that gets called after snap scrolling is performed       | OnEventCallback | `() => {}`      |
-| beforeSnap             | A function that gets called just before snap scrolling is performed | OnEventCallback | `() => {}`      |
+| Key                    | Description                                                         | Type              | Default value   |
+| ---------------------- | ------------------------------------------------------------------- | ----------------- | --------------- |
+| containerID            | ID of the wrapping container                                        | `string`          | none            |
+| hideScrollbar          | Whether to hide the browser's scrollbar or not                      | `boolean`         | `false`         |
+| normalScrollElementIDs | IDs of the sections to which scroll snapping doesn't apply          | `string[]`        | `[]`            |
+| snapDuration           | The duration that scroll snapping takes in milliseconds             | `number`          | `1000` (ms)     |
+| easingPreset           | The transition timing function that gets applied to snapping        | `EasingPreset`    | `easeInOutQuad` |
+| afterSnap              | A function that gets called after snap scrolling is performed       | `OnEventCallback` | `() => {}`      |
+| beforeSnap             | A function that gets called just before snap scrolling is performed | `OnEventCallback` | `() => {}`      |
 
-## Methods
+## Instance methods
 
 ```ts
 /**
@@ -140,12 +135,12 @@ unregister(): void
 ## Types
 
 ```ts
+type EasingPreset = "easeInOutQuad" | "easeInCubic" | "inOutQuintic";
+type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";
+
 interface OnEventCallback {
 	(id?: number, section?: HTMLElement | null): void;
 }
-
-type EasingPreset = "easeInOutQuad" | "easeInCubic" | "inOutQuintic";
-type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";
 ```
 
 ## Inspiration
@@ -155,12 +150,11 @@ type ScrollDirection = "top-to-bottom" | "bottom-to-top" | "";
 -   https://github.com/alvarotrigo/fullPage.js
 -   https://github.com/geomolenaar/LeScroll
 
-
 ## Credits
 
--	[Linkedin Account](https://www.linkedin.com/in/hasan-mothaffar-0a55301b0/)
--	[GitHub Account](https://github.com/HasanMothaffar)
--	[All contributors](https://github.com/Syrian-Open-Source/custom-snap/graphs/contributors)
+-   [Linkedin Account](https://www.linkedin.com/in/hasan-mothaffar-0a55301b0/)
+-   [GitHub Account](https://github.com/HasanMothaffar)
+-   [All contributors](https://github.com/Syrian-Open-Source/custom-snap/graphs/contributors)
 
 ## About Syrian Open Source
 
